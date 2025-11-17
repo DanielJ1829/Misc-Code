@@ -46,3 +46,4 @@ plt.xlabel("Real Axis"), plt.ylabel("Imaginary Axis")
 plt.title('Colour Scheme: none')
 #plt.savefig('C:/Users/danie/PycharmProjects/pythonProject/Julia.png', dpi = 3000)
 plt.show()
+
