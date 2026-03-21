@@ -1,0 +1,57 @@
+#web scraping is a process that can be used to automatically extract
+#data from a website
+
+#example task: find the name and salary of NBA players
+
+from bs4 import BeautifulSoup
+
+html = "<!DOCTYPE html><html><head><title>Page Title</title></head><body><h3><b id='boldest'>Lebron James</b></h3><p> Salary: $92,000,000 </p></body></html>
+#the beautiful soup constructor allows us to parse a document
+soup = BeautifulSoup(html, 'html5lib') #represents the document as a nested data structure (a set of tree like objects)
+
+
+tag_object = soup.title
+tag_object: <title>Page Title</title>
+
+tag_object = soup.h3
+tag object: <h3><b> id='boldest'>Lebron James</b></h3>
+
+tag_child =tag_object.b
+tag_child: <b id='boldest'>Lebron James</b>
+
+parent_tag = tag_child.parent
+parent_tag: <h3><b id='boldest'>Lebron James</b></h3>
+
+sibling:
+sibling_1 = tag_object.next_sibling
+sibling_1:
+<p> Salary: $92,000,000 </p>
+for a longer html file w/more siblings:
+sibling_2 = sibling_1.next_sibling
+
+tag_child.attrs: {'id': 'boldest'}
+#can access as a key value pair
+tag_child.string:
+'Lebron James' #return the content as a string
+
+find_all: a filter, lets you filter based on a tags name/text etc
+
+from bs4 import BeautifulSoup
+
+html = "<table><tr><th>Name</th><th>Age</th></tr>...</table>"
+table = BeautifulSoup(html, 'html5lib')
+table_rows=table.find_all(name='tr')
+
+table_rows: looks through all the descendants and finds the descendants that match your filters
+gives you a python iterable (like a list), with each element as a tag object for tr
+first_row = table_rows[0]
+will extract <tr><th>Name</th><th>Age</th></tr>
+
+first_row.th will extract <th>Name</th> and <th>Age</th>
+can also use first_row.td for the remaining rows
+for i,row in enumerate(table_rows):
+    print("row", i)
+    cells=row.find_all("td")
+
+    for j,cell in enumerate(cells):
+        print("column", j, "cell", cell)  #can replace cell with cell.text.strip() to just get the table's cell values
