@@ -1,8 +1,8 @@
 #PHYS10362
 """
 Title: Introduction to Programming Second Assignment: Doppler Shifts
-Username: x44401ap 
-Student ID: 11312994
+Username: ..
+Student ID: ..
 Date: 01/05/2024
 Purpose of Code: The code determines a series of outputs and corresponding 
 uncertainties by reading in a data file, plotting the result.
